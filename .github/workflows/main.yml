@@ -34,7 +34,7 @@ jobs:
 
   staging-test:
     runs-on: ubuntu-latest 
-    name: staing 
+    name: staging 
     needs: build 
     steps: 
     - name: download public folder to artifacts
