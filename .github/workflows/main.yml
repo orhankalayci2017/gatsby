@@ -52,7 +52,7 @@ jobs:
 
     - run: curl http://staging-orhankalayci.surge.sh >> test.file 
     - run: sleep 19
-    - run: grep "orhan" test.file
+    - run: grep "Hello Orhan!" test.file
 
 
 
