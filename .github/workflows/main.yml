@@ -50,9 +50,9 @@ jobs:
         login: ${{ secrets.surge_login }}
         token: ${{ secrets.surge_token }}
     - name: Run staging tests
-      run: curl http://staging-orhankalayci.surge.sh >> test.file 
-      run: sleep 19
-      run: grep "orhan" test.file
+      - run: curl http://staging-orhankalayci.surge.sh >> test.file 
+      - run: sleep 19
+      - run: grep "orhan" test.file
 
 
 
