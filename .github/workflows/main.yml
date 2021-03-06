@@ -28,7 +28,7 @@ jobs:
     - run: npm install -g gatsby-cli
     - run: npm install -g surge
     - run: gatsby build
-    - run: gatsby serve
+    - run: gatsby serve &
     - run: cd public
     - run: surge 
 
