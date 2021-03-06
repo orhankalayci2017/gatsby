@@ -31,12 +31,37 @@ jobs:
         name: gatsby-public-folder
         path: ./public
 
+
+  staging-test:
+    runs-on: ubuntu-latest 
+    name: staing 
+    needs: build 
+    steps: 
+    - name: download public folder to artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: gatsby-public-folder
+        path: ./public    
+    - name: Deploy to staging-orhankalayci.surge.sh
+      uses: dswistowski/surge-sh-action@v1
+      with:
+        domain: 'staging-orhankalayci.surge.sh'
+        project: './public'
+        login: ${{ secrets.surge_login }}
+        token: ${{ secrets.surge_token }}
+    - name: Run staging tests
+      run: curl http://staging-orhankalayci.surge.sh >> test.file 
+      run: sleep 19
+      run: grep "orhan" test.file
+
+
+
   deploy:
     runs-on: ubuntu-latest 
     name: deploy 
-    needs: build 
+    needs: staging-test 
     steps: 
-    - name: upload public folder to artifacts
+    - name: download public folder to artifacts
       uses: actions/download-artifact@v2
       with:
         name: gatsby-public-folder
