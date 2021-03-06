@@ -31,7 +31,7 @@ jobs:
     - run: gatsby serve &
     - run: cd public
     - name: Deploy to foo-bar.surge.sh
-        uses: dswistowski/surge-sh-action@v1
+      uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'orhankalayci.surge.sh'
           project: '.'
