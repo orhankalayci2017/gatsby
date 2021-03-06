@@ -29,8 +29,8 @@ jobs:
     - run: npm install -g surge
     - run: gatsby build
     - run: gatsby serve &
-    - run: cd public
-    - name: Deploy to foo-bar.surge.sh
+    - run: cd ./public
+    - name: Deploy to orhankalayci.surge.sh
       uses: dswistowski/surge-sh-action@v1
       with:
         domain: 'orhankalayci.surge.sh'
