@@ -28,13 +28,11 @@ jobs:
     - run: npm install -g gatsby-cli
     - run: npm install -g surge
     - run: gatsby build
-    - run: cd ./public
-    - run: test -f index.html
     - name: Deploy to orhankalayci.surge.sh
       uses: dswistowski/surge-sh-action@v1
       with:
         domain: 'orhankalayci.surge.sh'
-        project: '.'
+        project: './public'
         login: ${{ secrets.surge_login }}
         token: ${{ secrets.surge_token }}
 
