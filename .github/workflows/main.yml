@@ -25,13 +25,22 @@ jobs:
     - run: npm install -g gatsby-cli
     - run: npm install -g surge
     - run: gatsby build
+    - name: upload public folder to artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: gatsby-public-folder
+        path: ./public
 
   deploy:
     runs-on: ubuntu-latest 
     name: deploy 
     needs: build 
     steps: 
-    - uses: actions/checkout@v2
+    - name: upload public folder to artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: gatsby-public-folder
+        path: ./public    
     - name: Deploy to orhankalayci.surge.sh
       uses: dswistowski/surge-sh-action@v1
       with:
