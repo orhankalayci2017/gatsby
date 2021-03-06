@@ -25,7 +25,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    - run: npm install -g gatsby-cli
     - run: npm install -g surge
+    - run: gatsby build
+    - run: gatsby serve
     - run: cd public
     - run: surge 
 
